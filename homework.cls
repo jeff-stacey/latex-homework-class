@@ -44,6 +44,7 @@
 % Header & Page Setup
 \RequirePackage{fancyhdr}
 \ifthenelse{\equal{\@oplargemargins}{1}}{}{\RequirePackage{fullpage}}
+\RequirePackage{needspace}
 
 % Links
 \RequirePackage{hyperref}
@@ -69,6 +70,7 @@
     \newpage
   }{}
 
+  \needspace{6em}
   % Wrap in minipage so that we don't get a line break enywhere in between
   \begin{minipage}{\linewidth}%
     \stepcounter{questionCounter}%
@@ -161,8 +163,8 @@
 \ifthenelse{\equal{\@opanon}{0}}{%
   \renewcommand{\maketitle}[0]{%
     % Setup header
-    \setlength{\headheight}{15.2pt}
-    \setlength{\headsep}{0.2in}
+    \setlength{\headheight}{1em}
+    \setlength{\headsep}{1em}
     \lhead{\hwclass{} \hwlecture\hwsection}%
     \chead{\hwname{} (\hwemail)}%
     \rhead{\hwtype{} \hwnum}%
@@ -174,14 +176,27 @@
     % Don't put header on first page
     \thispagestyle{plain}
 
+    \vspace{-5em}
     \begin{center}
       {\Large \hwclass{} \hwtype{} \hwnum}
 
-      \hwname{} (\hwemail)
-
-      \today
+      \hwname{} (\hwemail) %\qquad \today
     \end{center}
+    \vspace{-2em}
     \renewcommand{\headrulewidth}{0.4pt}
+  }
+
+  \newcommand{\makenotitle}[0]{%
+    % Setup header
+    \setlength{\headheight}{1em}
+    \setlength{\headsep}{1em}
+    \lhead{\hwclass{} \hwlecture\hwsection}%
+    \chead{\hwname{} (\hwemail)}%
+    \rhead{\hwtype{} \hwnum}%
+
+    % Setup hrule in header
+    \renewcommand{\headrulewidth}{0.4pt}
+    \vspace{-5em}
   }
 
 }%
@@ -194,9 +209,8 @@
     \begin{center}
       {\Large \hwclass{} \hwtype{} \hwnum}
 
-      \hwname{} (\hwemail)
+      \hwname{} (\hwemail) %\qquad \today
 
-      \today
     \end{center}
     \renewcommand{\headrulewidth}{0.4pt}
     \newpage
